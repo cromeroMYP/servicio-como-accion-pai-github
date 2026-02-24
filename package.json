@@ -1,0 +1,31 @@
+{
+  "name": "servicio-como-accion-app",
+  "version": "1.0.0",
+  "description": "Web app explaining 'Servicio como Acción' for IB MYP with AI activity designer",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "openai": "^4.7.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "IB",
+    "PAI",
+    "servicio como acción",
+    "AI",
+    "educación"
+  ],
+  "author": "",
+  "license": "MIT"
+}
