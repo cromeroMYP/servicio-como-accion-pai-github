@@ -47,9 +47,12 @@ Esta aplicación web ofrece una explicación detallada del concepto de *servicio
 
 5. Abrir el navegador en `http://localhost:3000` y comenzar a utilizar la aplicación.
 
+### Version independiente
+También existe un archivo HTML que puede abrirse directamente sin necesidad de iniciar el servidor. Simplemente abre `public/standalone.html` con tu navegador (doble clic) y el formulario funcionará generando una propuesta de ejemplo localmente.
+
 ## Uso
 
-Rellena el formulario con el año PAI, la asignatura y el tipo de servicio (directo, indirecto, promoción de una causa o investigación). La IA generará una propuesta metodológica detallada.
+Rellena el formulario con el año PAI, la asignatura y el tipo de servicio (directo, indirecto, promoción de una causa o investigación). La IA generará una propuesta metodológica detallada cuando el servidor esté disponible; en la versión independiente se mostrará una plantilla de ejemplo.
 
 ## Licencia
 

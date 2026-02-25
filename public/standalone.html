@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Servicio como Acción - IB MYP</title>
+  <title>Servicio como Acción (versión independiente)</title>
   <style>
     body { font-family: Arial, sans-serif; margin: 2rem; }
     h1, h2 { color: #2c3e50; }
@@ -15,7 +15,10 @@
 </head>
 <body>
   <h1>Servicio como Acción - Programa de los Años Intermedios (PAI)</h1>
-  <p>Esta aplicación explica en detalle qué es el servicio como acción y ayuda a los profesores a diseñar actividades.</p>
+  <p>Esta es una versión independiente que puede abrirse directamente haciendo doble clic en
+     el archivo <code>standalone.html</code>. Funciona sin necesidad de servidor.
+  </p>
+
   <h2>¿Qué es el Servicio como Acción?</h2>
   <p>El servicio como acción es una parte integral del Programa de los Años Intermedios (PAI) del Bachillerato Internacional (IB). Busca desarrollar en los estudiantes una comprensión de la responsabilidad social y el compromiso con la comunidad mediante la realización de acciones de servicio con un propósito de aprendizaje.</p>
   <p>Tipos de servicio:</p>
@@ -48,8 +51,7 @@
   <div id="result"></div>
 
   <script>
-    // Shared form handling that works both when served and opened as file
-    document.getElementById('proposal-form').addEventListener('submit', async (e) => {
+    document.getElementById('proposal-form').addEventListener('submit', (e) => {
       e.preventDefault();
       const year = document.getElementById('year').value;
       const subject = document.getElementById('subject').value;
@@ -57,34 +59,8 @@
       const resultDiv = document.getElementById('result');
       resultDiv.textContent = 'Generando propuesta...';
 
-      function localProposal(y, s, t) {
-        return `Propuesta de ejemplo para año ${y}, asignatura ${s} y servicio ${t}.\n\n- Objetivo: fomentar la conciencia social.\n- Pasos: …\n- Recursos: …`;
-      }
-
-      // If running from file:// or the fetch fails, use the local proposal
-      if (window.location.protocol === 'file:') {
-        resultDiv.textContent = localProposal(year, subject, serviceType);
-        return;
-      }
-
-      try {
-        const resp = await fetch('/api/proposal', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ year, subject, serviceType })
-        });
-        if (!resp.ok) throw new Error('Network response was not ok');
-        const data = await resp.json();
-        if (data.error) {
-          throw new Error(data.error);
-        }
-        resultDiv.textContent = data.proposal;
-      } catch (err) {
-        // fallback to local proposal if server not available
-        resultDiv.textContent = localProposal(year, subject, serviceType);
-      }
+      const proposal = `Propuesta de ejemplo para año ${year}, asignatura ${subject} y servicio ${serviceType}.\n\n- Objetivo: fomentar la conciencia social.\n- Pasos: …\n- Recursos: …`;
+      resultDiv.textContent = proposal;
     });
   </script>
 </body>
