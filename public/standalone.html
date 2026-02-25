@@ -4,51 +4,55 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Servicio como Acción (versión independiente)</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ENjdO4Dr2bkBIFxQpeoPhZJ5nFQElt8iLQF2BbiSp9Og4D+RczE9Nichjhih+4m9" crossorigin="anonymous">
   <style>
-    body { font-family: Arial, sans-serif; margin: 2rem; }
-    h1, h2 { color: #2c3e50; }
-    form { margin-top: 1rem; }
-    label { display: block; margin-top: 0.5rem; }
-    input, select, button { padding: 0.4rem; margin-top: 0.2rem; width: 100%; max-width: 400px; }
-    #result { margin-top: 1rem; white-space: pre-wrap; background: #f4f4f4; padding: 1rem; border-radius: 4px; }
+    body { background: #f0f4f8; }
+    h1, h2 { color: #343a40; }
+    .container { max-width: 800px; margin-top: 2rem; }
+    #result { margin-top: 1rem; white-space: pre-wrap; background: #ffffff; padding: 1rem; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,.1); }
   </style>
 </head>
 <body>
-  <h1>Servicio como Acción - Programa de los Años Intermedios (PAI)</h1>
-  <p>Esta es una versión independiente que puede abrirse directamente haciendo doble clic en
-     el archivo <code>standalone.html</code>. Funciona sin necesidad de servidor.
-  </p>
+  <div class="container bg-white p-4 rounded shadow-sm">
+    <h1 class="mb-3">Servicio como Acción - Programa de los Años Intermedios (PAI)</h1>
+    <p class="lead">Esta es una versión independiente que puede abrirse directamente haciendo doble clic en <code>standalone.html</code>. Funciona sin necesidad de servidor.</p>
 
-  <h2>¿Qué es el Servicio como Acción?</h2>
-  <p>El servicio como acción es una parte integral del Programa de los Años Intermedios (PAI) del Bachillerato Internacional (IB). Busca desarrollar en los estudiantes una comprensión de la responsabilidad social y el compromiso con la comunidad mediante la realización de acciones de servicio con un propósito de aprendizaje.</p>
-  <p>Tipos de servicio:</p>
-  <ul>
-    <li><strong>Directo:</strong> interacción inmediata con personas o el medio.</li>
-    <li><strong>Indirecto:</strong> trabajo tras bambalinas en beneficio de otros.</li>
-    <li><strong>Promoción de una causa:</strong> campañas o abogacía.</li>
-    <li><strong>Investigación:</strong> estudio para comprender mejor una necesidad o problema social.</li>
-  </ul>
+    <h2 class="mt-4">¿Qué es el Servicio como Acción?</h2>
+    <p>El servicio como acción es una parte integral del Programa de los Años Intermedios (PAI) del Bachillerato Internacional (IB). Busca desarrollar en los estudiantes una comprensión de la responsabilidad social y el compromiso con la comunidad mediante la realización de acciones de servicio con un propósito de aprendizaje.</p>
+    <p>Tipos de servicio:</p>
+    <ul>
+      <li><strong>Directo:</strong> interacción inmediata con personas o el medio.</li>
+      <li><strong>Indirecto:</strong> trabajo tras bambalinas en beneficio de otros.</li>
+      <li><strong>Promoción de una causa:</strong> campañas o abogacía.</li>
+      <li><strong>Investigación:</strong> estudio para comprender mejor una necesidad o problema social.</li>
+    </ul>
 
-  <h2>Diseña tu propuesta de servicio</h2>
-  <form id="proposal-form">
-    <label for="year">Año PAI (1-5)</label>
-    <input type="number" id="year" name="year" min="1" max="5" required />
+    <h2 class="mt-4">Diseña tu propuesta de servicio</h2>
+    <form id="proposal-form" class="row g-3">
+      <div class="col-md-4">
+        <label for="year" class="form-label">Año PAI (1-5)</label>
+        <input type="number" class="form-control" id="year" name="year" min="1" max="5" required />
+      </div>
+      <div class="col-md-4">
+        <label for="subject" class="form-label">Asignatura</label>
+        <input type="text" class="form-control" id="subject" name="subject" required />
+      </div>
+      <div class="col-md-4">
+        <label for="serviceType" class="form-label">Tipo de servicio</label>
+        <select id="serviceType" class="form-select" name="serviceType" required>
+          <option value="directo">Directo</option>
+          <option value="indirecto">Indirecto</option>
+          <option value="promocion de una causa">Promoción de una causa</option>
+          <option value="investigacion">Investigación</option>
+        </select>
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Generar propuesta</button>
+      </div>
+    </form>
 
-    <label for="subject">Asignatura</label>
-    <input type="text" id="subject" name="subject" required />
-
-    <label for="serviceType">Tipo de servicio</label>
-    <select id="serviceType" name="serviceType" required>
-      <option value="directo">Directo</option>
-      <option value="indirecto">Indirecto</option>
-      <option value="promocion de una causa">Promoción de una causa</option>
-      <option value="investigacion">Investigación</option>
-    </select>
-
-    <button type="submit">Generar propuesta</button>
-  </form>
-
-  <div id="result"></div>
+    <div id="result" class="mt-4"></div>
+  </div>
 
   <script>
     document.getElementById('proposal-form').addEventListener('submit', (e) => {
